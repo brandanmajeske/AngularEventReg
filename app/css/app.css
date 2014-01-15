@@ -1,0 +1,120 @@
+/* app css stylesheet */
+
+html, body {
+  background-color: #111;
+  color: white;
+  padding-top: 50px;
+}
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.controller {
+  padding: 0 1.5em;
+}
+
+.controller img {
+  display:block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.well {
+  background-color: #111!important;
+  border: 1px dashed rgba(255,255,255,0.25);
+}
+.votingWidget {
+  margin: 10px 0 0 5px;
+  background-color: #111;
+  text-align: center;
+}
+
+.votingWidget .glyphicon {
+  color: red;
+  padding: 4px 1px;
+   -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  -o-user-select: none;
+  user-select: none;    
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.alternate {
+  background-color: #232323!important;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: inherit;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  border-radius: none!important;
+}
+form {
+}
+label {
+  color: red;
+}
+select {
+  padding: 5px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #111;
+  color: white;
+  border: none;
+  -webkit-appearance: none;  
+  -moz-appearance:    none;
+  appearance:         none;
+  cursor: pointer;
+}
+
+:focus {
+  outline: none!important;
+  outline-color: none!important;
+  outline-style: none!important;
+  outline-width: none!important;
+}
+
+input {
+  transition: background-color 0.3s ease;
+}
+
+input.ng-invalid.ng-dirty {
+  background-color: #ffffd7;
+}
