@@ -25,7 +25,13 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
     	<li><a href="/newevent.html">Create Event</a></li>
-    </ul>  
+    </ul>
+    <ul class="nav navbar-nav pull-right hidden-xs">
+       <li><a href="/editprofile.html">Edit Profile</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-left visible-xs">
+       <li><a href="/editprofile.html">Edit Profile</a></li>
+    </ul>   
     </div> 
   </div><!-- /.navbar-collapse -->
 </nav>
@@ -111,6 +117,7 @@
 <script src="/lib/angular/angular-sanitize.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/controllers/EventController.js"></script>
+<script src="/js/services/EventData.js"></script>
 <script src="/js/filters.js"></script>
 </body>
 </html>

@@ -84,7 +84,13 @@ html, body {
   height: inherit;
   border-bottom: 1px dashed rgba(255,255,255,0.25);
   border-radius: none!important;
+  z-index: 100;
 }
+
+.navbar-collapse {
+  z-index: 100;
+}
+
 form {
 }
 label {
