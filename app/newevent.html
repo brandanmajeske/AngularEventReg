@@ -32,7 +32,7 @@
 <div class="container"> 
 
 <div ng-controller="EditEventController" class="controller">
-	<h1 class="page-header">New Event</h1>
+	<h1 class="page-header">{{event.name}}</h1>
 
 <div class="row">
 <div class="col-lg-10 col-lg-offset-1 ">
@@ -46,7 +46,11 @@
   <div class="form-group">
   	<div class="col-xs-12">
     <label for="eventDate">Event Date:</label>
-	<input class="form-control input-md" id="eventDate" type="text" ng-model="event.date" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" placeholder="format (mm/dd/yyy)..." />
+	<input class="form-control input-md" id="eventDate" type="text" ng-model="event.date" required ng-pattern="/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/" ng-blur="isFuture(event.date)" placeholder="{{event.date | date:'MM/dd/yyyy'}}" />
+    <!-- <span ng-hide="validDate"><small>Event date must be in the future.</small></span> -->
+    <span ng-hide="isFuture(event.date)"><small>Event date must be in the future.</small></span>
+    <span ng-hide="form.eventDate.$error.pattern"><small>Incorrect date format: please use MM/DD/YYYY</small></span>
+
     </div>
   </div>
   <div class="form-group">
