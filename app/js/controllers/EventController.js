@@ -1,25 +1,22 @@
 'use strict';
 
-eventsApp.controller('EventController', function EventController($scope, eventData){
+eventsApp.controller('EventController', function EventController($scope, eventData, $routeParams, $route  ){
 
-	$scope.boolValue = true;
-	$scope.mystyle = {color:'red'};
-	$scope.myclass = 'red';
 	$scope.alternate = 'alternate';
-	$scope.buttonDisabled = true;
+    $scope.sortorder = 'name';
 
+    $scope.event = $route.current.locals.event;
 
-	$scope.sortorder = 'name';
-	$scope.event = eventData.event;
-	
+    /*	eventData.getEvent($routeParams.eventId).then(function(event) {
+            $scope.event = event;
+        });*/
 
-	
-
-	$scope.upVoteSession = function(session) {
+	$scope.upVoteSession = function(session, event) {
 		session.upVoteCount++;
 	}
 
 	$scope.downVoteSession = function(session){
 		session.upVoteCount--;
 	}
+
 });

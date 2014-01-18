@@ -1,0 +1,32 @@
+<div class="controller eventslist">
+    <h1 class="page-header">Events</h1>
+
+<!--   <pre>{{events}}</pre>-->
+    <ul class="media-list">
+        <li ng-repeat="event in events | orderBy:sortorder">
+            <a href="#/event/{{event.id}}">
+                    <div class="col-sm-12">
+                    <div class="well well-sm">
+                        <div class="row">
+                            <div class="col-sm-12"><h3>{{event.name}}</h3></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Date:</div>
+                            <div class="col-sm-6"><span>{{event.date | date:['MM/dd/yyyy']}}</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Time:</div>
+                            <div class="col-sm-6"><span>{{event.time}}</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Location</div>
+                            <div class="col-sm-3"><span>{{event.location.address}}</span></div>
+                            <div class="col-sm-3">&nbsp;<span>{{event.location.city}}, </span><span>{{event.location.state}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div> <!--end page header-->

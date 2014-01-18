@@ -1,0 +1,78 @@
+<div class="controller">
+    <div class="row">
+    <div class="col-sm-12 page-header">
+
+    {{event.eventId}}
+
+    <img class="img-responsive" ng-src="{{event.imageUrl}}" alt="{{event.name}}" />
+    </div>
+    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2 ng-class="myclass" ng-bind-template="{{event.name | uppercase}} &middot; {{event.date | date:'mediumDate'}}"</h2>
+		</div>
+	</div> <!-- end row -->
+
+
+	<div class="row">
+		<div class="col-md-4">
+		<address>
+			<strong>Address:</strong><br/>
+			{{event.location.address}}<br/>
+			{{event.location.city}}, {{event.location.state}}
+		</address>
+		<div><strong>Time: </strong>{{event.time}}</div>
+		<div><strong>Price: </strong>{{event.price | currency}}</div>
+		</div> 
+	</div>  <!-- end row -->
+
+
+
+	<h3 class="page-header">Sessions</h3>
+	<form>
+	<div class="form-control-group pull-left">
+	<label>Order By:</label>
+	<select ng-model="sortorder" class="form-control-sm">
+		<option selected value="name">Name</option>
+		<option value="-upVoteCount">Votes</option>
+	</select>
+	</div>
+	<div class="form-control-group ">
+	<label>Show:</label>
+	<select ng-model="query.level" class="form-control-sm">
+		<option selected value="">All</option>
+		<option value="introductory">Introductory</option>
+		<option value="intermediate">Intermediate</option>
+		<option value="advanced">Advanced</option>
+	</select>
+	</div>
+	</form>
+	<ul class="media-list">
+	<li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query" ng-class-odd="alternate" class="well" id="session{{session.id}}">
+
+		<div class="row">
+				<div class="col-md-1 well votingWidget">
+				<span>VOTE</span>
+			<div class="votingButton" ng-click="upVoteSession(session, event)">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+			</div>
+			<div class="badge badge-inverse">
+			<div>{{session.upVoteCount}}</div>
+			</div>
+			<div class="votingButton" ng-click="downVoteSession(session)">
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</div>
+		</div>
+		<div class="col-md-10">
+		<h4>{{session.name}}</h4>
+		<h5 style="margin-top: -8px">{{session.creatorName}}</h5>
+		<span>Duration: {{session.duration | duration}}</span><br/>
+		<span>Level: {{session.level}}</span>
+		<p>{{session.abstract}}</p>
+		</div>
+		</div>
+	</li>
+	</ul>
+
+
+</div> <!-- end EventController -->
