@@ -30,6 +30,11 @@ var eventsApp = angular.module('eventsApp', ['ngSanitize','ngResource', 'ngCooki
             }
         });
 
+        $routeProvider.when('/editprofile', {
+            templateUrl: 'templates/editprofile.html',
+            controller: 'EditProfileController'
+        });
+
         $routeProvider.otherwise({redirectTo: '/events'});
 
         //$locationProvider.html5Mode(true);

@@ -11,13 +11,13 @@
                             <div class="col-sm-10 col-sm-offset-1"><h3>{{event.name}}</h3></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-10 col-sm-offset-1">Date:<br/><span>{{event.date | date:['MM/dd/yyyy']}}</span></div>
+                            <div class="col-sm-10 col-sm-offset-1">Date:<span class="pull-right">{{event.date | date:['MM/dd/yyyy']}}</span></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-10 col-sm-offset-1">Time:<br/> <span>Start:{{event.time.start}}, End:{{event.time.end}}</span></div>
+                            <div class="col-sm-10 col-sm-offset-1">Time:<span class="pull-right">Start: {{event.time.start | date:['h']}}, End: {{event.time.end | date:['h']}}</span></div>
                         </div>
                         <div class="row">
-                        <div class="col-sm-10 col-sm-offset-1">Location:<br/><span>{{event.location.address}}</span><br /><span>{{event.location.city}}, </span><span>{{event.location.state}}</span></div>
+                        <div class="col-sm-10 col-sm-offset-1">Location:<span class="pull-right">{{event.location.address}}</span><br /><span class="pull-right">{{event.location.city}}, {{event.location.state}}</span></div>
                 </div>
             </a>
         </li>

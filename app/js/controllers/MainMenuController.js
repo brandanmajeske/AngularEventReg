@@ -13,6 +13,11 @@ function MainMenuController($scope, $location){
 
     };
 
+    $scope.editProfile = function () {
+
+      $location.url('editprofile');
+    };
+
 
 
 });

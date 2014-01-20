@@ -27,8 +27,8 @@ eventsApp.controller('EditEventController',
 			name: 'New Event',
 			date: $scope.date,
             time: {
-                start: '',
-                end: ''
+                start: 0,
+                end: 0
                 },
 			location: {
 				address: '',
