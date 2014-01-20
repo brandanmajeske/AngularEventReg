@@ -7,9 +7,7 @@ eventsApp.controller('EditEventController',
 		$scope.saveEvent = function(event, newEventForm){
 
 			if(newEventForm.$valid) {
-                console.log(event);
               eventData.save(event);
-
               $timeout(function(){
                   $location.url('events');
               }, 1000);
@@ -71,32 +69,20 @@ eventsApp.controller('EditEventController',
             }
         };
 
-		$scope.isFuture = function (date) {
+
+		$scope.isFuture = function (date, newEventForm) {
 			
 			var today = Math.round(new Date().getTime());
 			var newDate = new Date(date).getTime();
 			if(newDate > today) {
 				return true;
 			} else {
-				//event.date.$setValidity('invalid', true);
-				return false;
+               $scope.newEventForm.$invalid = true;
+               return false;
 			}
-
 		};		
 
-		/*$scope.isFuture = function (date) {
-			
-			var today = Math.round(new Date().getTime());
-			var newDate = new Date(date).getTime();
-			if(newDate > today) {
-				$scope.validDate = true;
-				return $scope.validDate;
-			} else {
-				$scope.validDate = false;
-			}
-			$scope.date = newDate;
-			return $scope.date;
-		};*/
+
 	
 	} // end EditEventController
 );
