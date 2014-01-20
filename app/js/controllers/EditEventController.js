@@ -3,7 +3,7 @@
 eventsApp.controller('EditEventController',
 	function EditEventController($scope, eventData, $location, $timeout){
 
-
+        $scope.multiSessions = false;
 		$scope.saveEvent = function(event, newEventForm){
 
 			if(newEventForm.$valid) {
@@ -51,6 +51,7 @@ eventsApp.controller('EditEventController',
             };
 
         $scope.addSession = function(){
+            $scope.multiSessions = true;
             $scope.event.sessions.push({
                 id: $scope.event.sessions.length + 1,
                 creatorName: '',
@@ -63,8 +64,8 @@ eventsApp.controller('EditEventController',
         };
 
         $scope.removeSession = function(session){
-            for (var i = 0, ii = event.sessions.length; i < ii; i++){
-                if (session === event.sessions[i]){
+            for (var i = 0, ii = $scope.event.sessions.length; i < ii; i++){
+                if (session === $scope.event.sessions[i]){
                     $scope.event.sessions.splice(i, 1);
                 }
             }

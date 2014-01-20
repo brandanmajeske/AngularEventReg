@@ -1,29 +1,23 @@
 <div class="controller eventslist">
     <h1 class="page-header">Events</h1>
 
-<!--   <pre>{{events}}</pre>-->
     <ul class="media-list">
         <li ng-repeat="event in events | orderBy:sortorder">
             <a href="#/event/{{event.id}}">
-                    <div class="col-sm-12">
+                    <div class="col-sm-4">
                     <div class="well well-sm">
+                        <img class="col-sm-12 img-rounded" ng-src="{{event.imageUrl}}" alt="{{event.name}}" />
                         <div class="row">
-                            <div class="col-sm-12"><h3>{{event.name}}</h3></div>
+                            <div class="col-sm-10 col-sm-offset-1"><h3>{{event.name}}</h3></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6">Date:</div>
-                            <div class="col-sm-6"><span>{{event.date | date:['MM/dd/yyyy']}}</span></div>
+                            <div class="col-sm-10 col-sm-offset-1">Date:<br/><span>{{event.date | date:['MM/dd/yyyy']}}</span></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6">Time:</div>
-                            <div class="col-sm-6"><span>{{event.time}}</span></div>
+                            <div class="col-sm-10 col-sm-offset-1">Time:<br/> <span>Start:{{event.time.start}}, End:{{event.time.end}}</span></div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6">Location</div>
-                            <div class="col-sm-3"><span>{{event.location.address}}</span></div>
-                            <div class="col-sm-3">&nbsp;<span>{{event.location.city}}, </span><span>{{event.location.state}}</span></div>
-                        </div>
-                    </div>
+                        <div class="col-sm-10 col-sm-offset-1">Location:<br/><span>{{event.location.address}}</span><br /><span>{{event.location.city}}, </span><span>{{event.location.state}}</span></div>
                 </div>
             </a>
         </li>

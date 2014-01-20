@@ -5,13 +5,11 @@
 <div class="col-lg-10 col-lg-offset-1 ">
 <form class="form-horizontal" role="form" name="newEventForm">
   <div class="form-group">
-  		<div class="col-xs-12">
+  		<div class="col-md-6 col-xs-12">
   		<label for="eventName">Event Name:</label>
 		<input class="form-control input-md" id="eventName" type="text" ng-model="event.name" required placeholder="Name of your event..." />
     	</div>
-  </div>
-  <div class="form-group">
-  	<div class="col-xs-12">
+  	<div class="col-md-6 col-xs-12">
     <label for="eventDate">Event Date:</label>
 	<input class="form-control input-md" id="eventDate" type="text" ng-model="event.date" required ng-pattern="/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/" ng-blur="isFuture(event.date)" placeholder="{{event.date | date:'MM/dd/yyyy'}}" />
     <!-- <span ng-hide="validDate"><small>Event date must be in the future.</small></span> -->
@@ -21,29 +19,26 @@
     </div>
   </div>
   <div class="form-group">
-  	<div class="col-xs-12">
+  	<div class="col-md-2 col-xs-12 pull-left">
  	<label for="eventStartTime">Event Start Time:</label>
 	<input class="form-control input-md" id="eventStartTime" type="time" ng-model="event.time.start" placeholder="Start and end time..." />
     <label for="eventEndTime">Event End Time:</label>
 	<input class="form-control input-md" id="eventEndTime" type="time" ng-model="event.time.end" placeholder="Start and end time..." />
     </div>
-   </div>
-   <div class="form-group">
- 	<div class="col-xs-12">
+
+ 	<div class="col-md-10 col-xs-12 pull-right">
    		<label for="eventLocation">Event Location:</label>
-		<input class="form-control input-md" id="eventLocation" type="text" ng-model="event.location.address" placeholder="Address of event..." />
-		<input class="form-control input-md" id="eventCity" type="text" ng-model="event.location.city" placeholder="City..." />
-		<input class="form-control input-md" id="eventState" type="text" ng-model="event.location.state" placeholder="State..." />
+		<input class="col-md-3 col-xs-12 form-control input-md" id="eventLocation" type="text" ng-model="event.location.address" placeholder="Address of event..." />
+		<input class="col-md-3 col-xs-12 form-control input-md" id="eventCity" type="text" ng-model="event.location.city" placeholder="City..." />
+		<input class="col-md-3 col-xs-12 form-control input-md" id="eventState" type="text" ng-model="event.location.state" placeholder="State..." />
     </div>
     </div>
    <div class="form-group">
-   <div class="col-xs-12">
+   <div class="col-md-2 col-xs-12 pull-left">
    <label for="price">Price:</label>
    	<input class="form-control input-md" id="price" type="number" ng-model="event.price" placeholder="{{event.price | currency }}" />
     </div>
-    </div>
-    <div class="form-group">
-        <div class="col-xs-12">
+        <div class="col-md-10 col-xs-12 pull-right">
             <label for="eventImageUrl">Image:</label>
             <input class="form-control input-md" id="eventImageUrl" type="url" ng-model="event.imageUrl" placeholder="Url of image..." />
         </div>
@@ -57,19 +52,24 @@
     <h4 class="page-header">Sessions</h4>
     <div class="form-group">
         <div class="col-xs-12">
-            <a class="btn btn-success btn-sm" href="" ng-click="addSession()">Add Session</a>
+            <a class="btn btn-default btn-sm pull-right" href="" ng-click="addSession()">&plus; add session</a>
         </div>
     </div>
+    <!-- Sessions -->
     <div class="form-group well" ng-repeat="session in event.sessions">
-        <h4 class="pull-left">{{session.name}}</h4><a class="btn btn-danger btn-sm pull-right" href="" ng-click="removeSession(session)">X</a>
-        <div class="col-xs-12">
+        <h4 class="clearfix pull-left">{{session.name}}</h4><a class="label label-danger label-sm pull-right" href="" ng-show="multiSessions" ng-click="removeSession(session)">&#215</a>
+        <div class="clearfix"></div>
+        <div class="col-md-3 pull-left col-xs-12">
             <input class="hidden" name="id" ng-model="session.id" value="1">
             <input class="hidden" name="upVoteCount" ng-model="session.upVoteCount" value="0">
             <label for="name">Session Name:</label>
             <input class="form-control input-md" type="text" id="name" ng-model="session.name" placeholder="Session name..." />
+        </div>
+        <div class="col-md-3 pull-left col-xs-12">
             <label for="creatorName">Speaker Name:</label>
             <input class="form-control input-md" type="text" id="creatorName" ng-model="session.creatorName" placeholder="Speaker name..." />
-            <br/>
+        </div>
+        <div class="col-md-3 pull-left col-xs-12">
             <label for="duration">Duration:</label>
             <select id="duration" placeholder="Choose One" ng-model="session.duration">
                 <option value="" selected default>Choose One</option>
@@ -78,7 +78,8 @@
                 <option value="3">Half Day</option>
                 <option value="4">Full Day</option>
             </select>
-            <br/>
+        </div>
+        <div class="col-md-3 pull-left col-xs-12">
             <label for="level">Level:</label>
             <select id="level" placeholder="Choose One" ng-model="session.level">
                 <option value="" selected default>Choose One</option>
@@ -86,17 +87,19 @@
                 <option value="intermediate" >Intermediate</option>
                 <option value="advanced">Advanced</option>
             </select>
+        </div>
+        <div class="pull-left col-xs-12">
             <br/>
             <br/>
             <label for="abstract">Abstract:</label>
-            <textarea id="abstract" row="6" class="form-control input-lg" ng-model="session.abstract"></textarea>
+            <textarea id="abstract" row="10" class="form-control input-lg" ng-model="session.abstract"></textarea>
         </div>
     </div>
 
     <div class="form-group">
-    <div class="col-xs-12">
-    <button type="submit" class="btn btn-default" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, newEventForm)">Save</button>
-	<button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+    <div class="col-xs-3 pull-right">
+    <button type="submit" class="btn btn-lg btn-default pull-left" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, newEventForm)">Save</button>
+	<button type="button" class="btn btn-lg btn-danger pull-right" ng-click="cancelEdit()">Cancel</button>
 	</div>
   </div>
 </form>
