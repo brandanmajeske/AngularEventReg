@@ -1,5 +1,5 @@
 <div class="controller">
-	<h1 class="page-header">{{event.name}}</h1>
+	<h1 class="page-header" ng-bind="event.name">Event Name</h1>
 
 <div class="row">
 <div class="col-lg-10 col-lg-offset-1 ">
@@ -22,8 +22,10 @@
   </div>
   <div class="form-group">
   	<div class="col-xs-12">
- 	<label for="eventTime">Event Time:</label>
-	<input class="form-control input-md" id="eventTime" type="text" ng-model="event.time" placeholder="Start and end time..." />
+ 	<label for="eventStartTime">Event Start Time:</label>
+	<input class="form-control input-md" id="eventStartTime" type="time" ng-model="event.time.start" placeholder="Start and end time..." />
+    <label for="eventEndTime">Event End Time:</label>
+	<input class="form-control input-md" id="eventEndTime" type="time" ng-model="event.time.end" placeholder="Start and end time..." />
     </div>
    </div>
    <div class="form-group">
@@ -36,23 +38,68 @@
     </div>
    <div class="form-group">
    <div class="col-xs-12">
-   <label for="eventImageUrl">Image:</label>
-   	<input class="form-control input-md" id="eventImageUrl" type="url" ng-model="event.imageUrl" placeholder="Url of image..." />
+   <label for="price">Price:</label>
+   	<input class="form-control input-md" id="price" type="number" ng-model="event.price" placeholder="{{event.price | currency }}" />
     </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <label for="eventImageUrl">Image:</label>
+            <input class="form-control input-md" id="eventImageUrl" type="url" ng-model="event.imageUrl" placeholder="Url of image..." />
+        </div>
     </div>
     <div class="form-group">
     <div class="col-xs-12">
     <img ng-src="{{event.imageUrl}}" src="" />
 	</div>
 	</div>
-  <div class="form-group">
+
+    <h4 class="page-header">Sessions</h4>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <a class="btn btn-success btn-sm" href="" ng-click="addSession()">Add Session</a>
+        </div>
+    </div>
+    <div class="form-group well" ng-repeat="session in event.sessions">
+        <h4 class="pull-left">{{session.name}}</h4><a class="btn btn-danger btn-sm pull-right" href="" ng-click="removeSession(session)">X</a>
+        <div class="col-xs-12">
+            <input class="hidden" name="id" ng-model="session.id" value="1">
+            <input class="hidden" name="upVoteCount" ng-model="session.upVoteCount" value="0">
+            <label for="name">Session Name:</label>
+            <input class="form-control input-md" type="text" id="name" ng-model="session.name" placeholder="Session name..." />
+            <label for="creatorName">Speaker Name:</label>
+            <input class="form-control input-md" type="text" id="creatorName" ng-model="session.creatorName" placeholder="Speaker name..." />
+            <br/>
+            <label for="duration">Duration:</label>
+            <select id="duration" placeholder="Choose One" ng-model="session.duration">
+                <option value="" selected default>Choose One</option>
+                <option value="1">Half Hour</option>
+                <option value="2">1 Hour</option>
+                <option value="3">Half Day</option>
+                <option value="4">Full Day</option>
+            </select>
+            <br/>
+            <label for="level">Level:</label>
+            <select id="level" placeholder="Choose One" ng-model="session.level">
+                <option value="" selected default>Choose One</option>
+                <option selected value="introductory">Introductory</option>
+                <option value="intermediate" >Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+            <br/>
+            <br/>
+            <label for="abstract">Abstract:</label>
+            <textarea id="abstract" row="6" class="form-control input-lg" ng-model="session.abstract"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
     <div class="col-xs-12">
     <button type="submit" class="btn btn-default" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, newEventForm)">Save</button>
-	<button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button
+	<button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
 	</div>
   </div>
 </form>
-
 
 </div>
 </div>

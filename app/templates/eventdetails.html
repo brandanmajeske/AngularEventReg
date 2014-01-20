@@ -21,7 +21,7 @@
 			{{event.location.address}}<br/>
 			{{event.location.city}}, {{event.location.state}}
 		</address>
-		<div><strong>Time: </strong>{{event.time}}</div>
+		<div><strong>Time - </strong>Start: {{event.time.start}}, End: {{event.time.end}}</div>
 		<div><strong>Price: </strong>{{event.price | currency}}</div>
 		</div> 
 	</div>  <!-- end row -->
@@ -73,6 +73,4 @@
 		</div>
 	</li>
 	</ul>
-
-
 </div> <!-- end EventController -->

@@ -34,4 +34,3 @@ var eventsApp = angular.module('eventsApp', ['ngSanitize','ngResource', 'ngCooki
 
         //$locationProvider.html5Mode(true);
     });
-
