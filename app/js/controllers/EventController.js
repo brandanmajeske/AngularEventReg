@@ -11,40 +11,45 @@ eventsApp.controller('EventController', function EventController($scope, eventDa
             $scope.event = event;
         });*/
 
-    //$cookieStore.remove('upVote');
-    console.log($cookieStore.get('upVote'));
 
 
         $scope.upVoteSession = function(session, event) {
 
-            if(typeof $cookieStore.get('upVote') === 'undefined'){
+            var sessionName = session.name;
+            console.log(sessionName);
+            console.log(session.id);
+
+            if(typeof $cookieStore.get('upVote-'+sessionName) === 'undefined'){
 
             session.upVoteCount++;
-            console.log(session.upVoteCount);
-            $cookieStore.put('upVote', session.upVoteCount);
-            console.log($cookieStore.get('upVote'));
+            eventData.saveVote(event, session, session.upVoteCount);
+
+            $cookieStore.put('upVote-'+sessionName, session.upVoteCount);
+            console.log($cookieStore.get('upVote-'+sessionName));
 
             } else {
+                //change this to appropriate message
                 window.alert('Sorry! You\'ve already voted.');
+
             }
         }
 
         $scope.downVoteSession = function(session, event){
 
+            var sessionName = session.name;
+            console.log(sessionName);
+            console.log(session.id);
 
-
-            if(typeof $cookieStore.get('downVote') === 'undefined'){
+            if(typeof $cookieStore.get('downVote-'+sessionName) === 'undefined'){
                 session.upVoteCount--;
-                console.log(event);
-                $cookieStore.put('downVote', session.upVoteCount);
-                console.log($cookieStore.get('downVote'));
+
+            $cookieStore.put('downVote-'+sessionName, session.upVoteCount);
 
             } else {
+                //change this to appropriate message
                 window.alert('Sorry! You\'ve already voted.');
             }
         }
-
-
 
 
 });

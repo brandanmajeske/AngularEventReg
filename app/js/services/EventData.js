@@ -59,6 +59,21 @@ eventsApp.factory('eventData', function($http, $q, $resource, $timeout, $parse){
             });
 
 		},
+        saveVote: function(event, session, upVoteCount){
+            console.log('you voted for: '+event.name +' Session: ' + session.id + ': ' + session.name );
+            //console.log(event);
+            //console.log(upVoteCount);
+
+
+
+
+     /*       var deferred = $q.defer();
+            resource.update(event.id,
+                function(response){deffered.resolve(response);},
+                function(response){deffered.reject(response);}
+            );
+            return deffered.promise;*/
+        },
 
         getAllEvents: function(){
 
