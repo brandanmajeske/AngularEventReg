@@ -1,5 +1,5 @@
 eventsApp.factory('eventData', function($http, $q, $resource, $timeout, $parse){
-	var resource = $resource('/data/event/:id', {id:'@id'}, {"getAll": {method: "GET", isArray: true, params: {something: 'foo'}}});
+	var resource = $resource('/data/event/:id', {id:'@id'});
 
 	return {
 		getEvent: function(eventId) {
@@ -59,20 +59,16 @@ eventsApp.factory('eventData', function($http, $q, $resource, $timeout, $parse){
             });
 
 		},
-        saveVote: function(event, session, upVoteCount){
-            console.log('you voted for: '+event.name +' Session: ' + session.id + ': ' + session.name );
-            //console.log(event);
-            //console.log(upVoteCount);
+        saveVote: function(event){
 
 
-
-
-     /*       var deferred = $q.defer();
-            resource.update(event.id,
-                function(response){deffered.resolve(response);},
-                function(response){deffered.reject(response);}
+            var deferred = $q.defer();
+            resource.save(event,
+                function(response) {deferred.resolve(response);},
+                function(response) {deferred.reject(response);}
             );
-            return deffered.promise;*/
+            return deferred.promise;
+
         },
 
         getAllEvents: function(){

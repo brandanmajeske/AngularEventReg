@@ -16,16 +16,16 @@ eventsApp.controller('EventController', function EventController($scope, eventDa
         $scope.upVoteSession = function(session, event) {
 
             var sessionName = session.name;
-            console.log(sessionName);
-            console.log(session.id);
+
 
             if(typeof $cookieStore.get('upVote-'+sessionName) === 'undefined'){
 
             session.upVoteCount++;
-            eventData.saveVote(event, session, session.upVoteCount);
+            eventData.saveVote(event);
+
+
 
             $cookieStore.put('upVote-'+sessionName, session.upVoteCount);
-            console.log($cookieStore.get('upVote-'+sessionName));
 
             } else {
                 //change this to appropriate message
@@ -37,13 +37,13 @@ eventsApp.controller('EventController', function EventController($scope, eventDa
         $scope.downVoteSession = function(session, event){
 
             var sessionName = session.name;
-            console.log(sessionName);
-            console.log(session.id);
+
 
             if(typeof $cookieStore.get('downVote-'+sessionName) === 'undefined'){
                 session.upVoteCount--;
 
-            $cookieStore.put('downVote-'+sessionName, session.upVoteCount);
+                $cookieStore.put('downVote-'+sessionName, session.upVoteCount);
+                eventData.saveVote(event);
 
             } else {
                 //change this to appropriate message
